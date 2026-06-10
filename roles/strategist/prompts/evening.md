@@ -2,7 +2,7 @@
 
 ## Контекст
 
-- Планы: {{WORKSPACE_DIR}}/DS-strategy/current/
+- Планы: SDTWork/DS-strategy/current/
 
 ## Алгоритм
 

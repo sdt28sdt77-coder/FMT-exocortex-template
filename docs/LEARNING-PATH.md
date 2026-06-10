@@ -190,7 +190,7 @@ L1: Ecosystem    — вся система: платформа + сообщес�
 |--------|-------------|--------|-----------------|
 | **L1: Ecosystem** | Сообщество, семинары, контент | systemsworld.club, Telegram-каналы | Ты участвуешь |
 | **L2: Platform** | Сервисы, к которым подключаешься | Бот @aist_me_bot, Knowledge Index | Обновляется разработчиком |
-| **L3: Template** | Шаблон, из которого создан твой IWE | Этот репо (FMT-exocortex-template) | `update.sh` — Platform-space |
+| **L3: Template** | Шаблон, из которого создан твой IWE | Этот репо (SDT) | `update.sh` — Platform-space |
 | **L4: Personal IWE** | Твоя работа, планы, знания | ~/IWE/CLAUDE.md, DS-strategy/ | Только ты (User-space) |
 
 **Где изучить:**
@@ -199,10 +199,10 @@ L1: Ecosystem    — вся система: платформа + сообщес�
 
 ### 2.2. От шаблона к рабочему пространству
 
-#### Структура репо FMT-exocortex-template
+#### Структура репо SDT
 
 ```
-FMT-exocortex-template/
+SDT/
 │
 ├── CLAUDE.md                        # Правила для Claude Code
 ├── README.md                        # Быстрый старт
@@ -244,7 +244,7 @@ FMT-exocortex-template/
 #### Что делает setup.sh
 
 1. Форкает шаблон → твой GitHub аккаунт
-2. Подставляет 7 плейсхолдеров (`{{GITHUB_USER}}`, `{{WORKSPACE_DIR}}` и др.)
+2. Подставляет 7 плейсхолдеров (`your-username`, `SDTWork` и др.)
 3. Копирует `CLAUDE.md` → корень рабочей директории
 4. Копирует `memory/*.md` → `~/.claude/projects/.../memory/`
 5. Создаёт `DS-strategy/` из `seed/strategy/` (отдельный приватный репо)
@@ -259,7 +259,7 @@ FMT-exocortex-template/
 │   ├── current/DayPlan, WeekPlan      # Стратег пишет, ты читаешь
 │   ├── inbox/WP-*.md                  # контексты задач
 │   └── docs/Strategy.md              # твоя стратегия
-├── FMT-exocortex-template/            # НЕ трогать (обновляется через update.sh)
+├── SDT/            # НЕ трогать (обновляется через update.sh)
 ├── PACK-{область}/                    # когда создашь: доменные знания
 └── DS-{проекты}/                      # когда создашь: код, инструменты
 ```
@@ -298,13 +298,13 @@ FMT-exocortex-template/
 |---------|----------|--------|----------|
 | **Конфиг** | yaml-файл с параметрами | `strategy_day: saturday` | Настройки поведения агентов |
 | **AUTHOR-ONLY зоны** | HTML-маркеры в протоколах | Проверки специфичных систем | Расширение протоколов без конфликтов с update.sh |
-| **Плейсхолдеры** | `{{WORKSPACE_DIR}}` и др. | Пути, имя пользователя GitHub | Автоподстановка при setup |
+| **Плейсхолдеры** | `SDTWork` и др. | Пути, имя пользователя GitHub | Автоподстановка при setup |
 
 Подробнее о AUTHOR-ONLY зонах: [CLAUDE.md §7](../CLAUDE.md).
 
 ### 2.5. Обновления: update.sh
 
-**Одна команда:** `cd ~/IWE/FMT-exocortex-template && bash update.sh`
+**Одна команда:** `cd ~/IWE/SDT && bash update.sh`
 
 Скрипт скачивает манифест обновлений с GitHub, сравнивает sha256 локальных файлов с upstream, показывает превью и применяет после подтверждения:
 
@@ -467,7 +467,7 @@ FPF (First Principles Framework) — «операционная система �
 | Тип | Подтип | Что хранит | Source-of-truth? | Примеры |
 |-----|--------|-----------|-----------------|---------|
 | **Base** | Принципы | ZP, FPF, SPF — принципы и фреймворки | Да | ZP, FPF, SPF |
-| **Base** | Форматы | FMT-* — протоколы структуры | Да (для формата) | FMT-exocortex-template, FMT-s2r |
+| **Base** | Форматы | FMT-* — протоколы структуры | Да (для формата) | SDT, FMT-s2r |
 | **Pack** | — | Паспорт предметной области | Да | PACK-{область} |
 | **DS** | instrument / governance / surface | Производные от Pack | Нет | DS-strategy, DS-ai-systems |
 
@@ -493,7 +493,7 @@ DS — самый частый тип репозитория, который т�
 
 | Формат | Назначение | Для кого |
 |--------|-----------|----------|
-| **FMT-exocortex-template** | Персональное рабочее пространство (IWE) | Каждый пользователь T4+ |
+| **SDT** | Персональное рабочее пространство (IWE) | Каждый пользователь T4+ |
 | **FMT-s2r** | Проектные репо: 3×3 матрица (системы × роли) | Продвинутые пользователи с многокомпонентными проектами |
 
 **FMT-s2r (System-to-Role)** организует проект по ядрам (kernels), каждое из которых описывается через 9 документов (3 системы × 3 роли). Полезен, когда проект имеет несколько систем: мобильное приложение + бэкенд + инфраструктура.
@@ -536,7 +536,7 @@ DS — самый частый тип репозитория, который т�
 | Префикс | Тип | Пример |
 |---------|-----|--------|
 | `ZP`, `FPF`, `SPF` | Base/Принципы | ZP, FPF, SPF |
-| `FMT-` | Base/Форматы | FMT-exocortex-template |
+| `FMT-` | Base/Форматы | SDT |
 | `PACK-` | Pack | PACK-digital-platform |
 | `DS-` | DS | DS-ai-systems, DS-strategy |
 
@@ -686,7 +686,7 @@ DS — самый частый тип репозитория, который т�
 - [ ] Selective Reindex: Pack изменены? → `selective-reindex.sh`
 - [ ] Repo CLAUDE.md: feat-коммиты → новые правила?
 - [ ] Draft-list: Pack обогащён → предложить черновик?
-- [ ] CHANGELOG шаблона: коммиты в FMT-exocortex-template? → обновить
+- [ ] CHANGELOG шаблона: коммиты в SDT? → обновить
 - [ ] Session log: удалить строку из open-sessions.log
 - [ ] Отчёт Close: что сделано, что осталось
 
@@ -1110,7 +1110,7 @@ R8 Синхронизатор (диспетчер)
     ├─→ R2 Экстрактор (знания)
     │   └─→ Pack-сущности, DS-strategy/inbox/
     ├─→ R9 Шаблонизатор (обновления)
-    │   └─→ FMT-exocortex-template/
+    │   └─→ SDT/
     ├─→ R11 Наладчик (ошибки бота)
     │   └─→ GitHub PR, Issues
     ├─→ R10 Статистик (аналитика)
@@ -1342,7 +1342,7 @@ Telegram-бот — основная точка входа для T1-T3. Для 
 - 2.2: Backup экзокортекса (memory/ → DS-strategy/)
 - 2.3: Ontology sync (Pack → мастер)
 - 2.4: File sync (GitHub → local)
-- 2.5: Template sync (автор → FMT-exocortex-template)
+- 2.5: Template sync (автор → SDT)
 - 2.6: Pack projection (Pack → Downstream)
 
 **Где изучить:**

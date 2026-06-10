@@ -83,7 +83,7 @@ MCP подключается через https://claude.ai/settings/connectors (�
 
 Ручной запуск (в терминале или встроенном терминале VS Code):
 ```bash
-bash ~/IWE/FMT-exocortex-template/roles/strategist/scripts/strategist.sh day-plan
+bash ~/IWE/SDT/roles/strategist/scripts/strategist.sh day-plan
 ```
 
 ### Экстрактор (R2)
@@ -91,12 +91,12 @@ bash ~/IWE/FMT-exocortex-template/roles/strategist/scripts/strategist.sh day-pla
 
 Всегда предлагает, никогда не пишет без одобрения (human-in-the-loop).
 
-Установка (в терминале): `bash ~/IWE/FMT-exocortex-template/roles/extractor/install.sh`
+Установка (в терминале): `bash ~/IWE/SDT/roles/extractor/install.sh`
 
 ### Синхронизатор (R8)
 Центральный диспетчер (bash, не ИИ). Управляет расписанием всех ролей, отправляет уведомления в Telegram, делает ночной обзор кода.
 
-Установка (в терминале): `bash ~/IWE/FMT-exocortex-template/roles/synchronizer/install.sh`
+Установка (в терминале): `bash ~/IWE/SDT/roles/synchronizer/install.sh`
 
 ---
 
@@ -129,7 +129,7 @@ MEMORY.md — личные (текущие задачи, РП недели). Р�
 ## Обновление IWE
 
 ```bash
-cd ~/IWE/FMT-exocortex-template
+cd ~/IWE/SDT
 bash update.sh          # обновить
 bash update.sh --check  # проверить без применения
 ```

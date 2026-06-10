@@ -1,0 +1,13 @@
+{
+    "providerProfiles": {
+        "currentApiConfigName": "alfagen",
+        "apiConfigs": {
+            "alfagen": {
+                "openAiBaseUrl": "https://alfagen.moscow.alfaintra.net/continue-dev",
+                "openAiApiKey": "5d2995e0-a060-4878-9d91-59b5f6d74ca3",
+                "openAiModelId": "zai-org/GLM-5-FP8",
+                "apiProvider": "openai"
+            }
+        }
+    }
+}

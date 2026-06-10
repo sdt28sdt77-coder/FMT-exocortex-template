@@ -33,7 +33,7 @@ Day Open = протокол. Исполнять ТОЛЬКО пошагово ч
 
 Fallback: файла нет → пропустить, работать из коммитов.
 
-Коммиты за вчера по всем `{{WORKSPACE_DIR}}/*/` репо. Сопоставить с DayPlan.
+Коммиты за вчера по всем `/Users/alfa/iwe/sdt/*/` репо. Сопоставить с DayPlan.
 
 ### 1b. GitHub Issues
 `gh issue list` по всем репо (включая вложенным). Фильтр 2 дня. Связь с РП по ключевым словам.
@@ -74,7 +74,7 @@ Mandatory РП отсутствуют в WeekPlan → «Требует вним�
 ### 5. IWE за ночь (светофор)
 Scheduler report, update.sh, template-sync, MCP reindex, Scout. 🟢/🟡/🔴.
 
-**Проверка обновлений:** `cd {{WORKSPACE_DIR}}/FMT-exocortex-template && bash update.sh --check 2>&1`. Если доступно обновление → добавить в «Требует внимания»: «Доступно обновление IWE → `/iwe-update`».
+**Проверка обновлений:** `cd /Users/alfa/iwe/sdt/SDT1 && bash update.sh --check 2>&1`. Если доступно обновление → добавить в «Требует внимания»: «Доступно обновление IWE → `/iwe-update`».
 
 ### 5b. Бот QA
 Feedback-triage report → дельта, urgent. Фильтр 2 дня. Нет новых → «нет новых за 2 дня».

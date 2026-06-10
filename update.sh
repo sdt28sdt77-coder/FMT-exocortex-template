@@ -1,5 +1,5 @@
 #!/bin/bash
-# Exocortex Update — загрузка обновлений платформы из FMT-exocortex-template
+# Exocortex Update — загрузка обновлений платформы из SDT
 #
 # Использование:
 #   bash update.sh              # Превью + применение (с подтверждением)
@@ -338,20 +338,20 @@ if [ -f "$ENV_FILE" ]; then
 
             if grep -q '{{[A-Z_]*}}' "$filepath" 2>/dev/null; then
                 sed_inplace \
-                    -e "s|{{GITHUB_USER}}|${ENV_GITHUB_USER:-}|g" \
+                    -e "s|your-username|${ENV_GITHUB_USER:-}|g" \
                     -e "s|{{EXOCORTEX_REPO}}|${ENV_EXOCORTEX_REPO:-}|g" \
-                    -e "s|{{WORKSPACE_DIR}}|${ENV_WORKSPACE_DIR:-}|g" \
-                    -e "s|{{CLAUDE_PATH}}|${ENV_CLAUDE_PATH:-}|g" \
-                    -e "s|{{CLAUDE_PROJECT_SLUG}}|${ENV_CLAUDE_PROJECT_SLUG:-}|g" \
-                    -e "s|{{TIMEZONE_HOUR}}|${ENV_TIMEZONE_HOUR:-}|g" \
-                    -e "s|{{TIMEZONE_DESC}}|${ENV_TIMEZONE_DESC:-}|g" \
-                    -e "s|{{HOME_DIR}}|${ENV_HOME_DIR:-$HOME}|g" \
+                    -e "s|SDTWork|${ENV_WORKSPACE_DIR:-}|g" \
+                    -e "s|claude|${ENV_CLAUDE_PATH:-}|g" \
+                    -e "s|SDTWork|${ENV_CLAUDE_PROJECT_SLUG:-}|g" \
+                    -e "s|4|${ENV_TIMEZONE_HOUR:-}|g" \
+                    -e "s|4:00 UTC|${ENV_TIMEZONE_DESC:-}|g" \
+                    -e "s|/Users/alfa|${ENV_HOME_DIR:-$HOME}|g" \
                     "$filepath"
                 PLACEHOLDER_HIT=$((PLACEHOLDER_HIT + 1))
             fi
 
             # Replace template repo name with user's repo name (skip UPSTREAM-CONST lines)
-            if [ -n "${ENV_EXOCORTEX_REPO:-}" ] && grep -q 'FMT-exocortex-template' "$filepath" 2>/dev/null; then
+            if [ -n "${ENV_EXOCORTEX_REPO:-}" ] && grep -q 'SDT' "$filepath" 2>/dev/null; then
                 sed_inplace "/UPSTREAM-CONST/!s|FMT-exocortex-template|${ENV_EXOCORTEX_REPO}|g" "$filepath"
             fi
         done
@@ -423,8 +423,8 @@ ENVEOF
         filepath="$SCRIPT_DIR/$f"
         [ -f "$filepath" ] || continue
         sed_inplace \
-            -e "s|{{WORKSPACE_DIR}}|$DETECTED_WORKSPACE|g" \
-            -e "s|{{HOME_DIR}}|$HOME|g" \
+            -e "s|SDTWork|$DETECTED_WORKSPACE|g" \
+            -e "s|/Users/alfa|$HOME|g" \
             "$filepath" 2>/dev/null || true
     done
 fi
@@ -540,7 +540,7 @@ if [ -f "$ENV_FILE" ] && [ -n "${ENV_WORKSPACE_DIR:-}" ] && [ -n "${ENV_EXOCORTE
             fi
 
             # Fix old repo name references in links
-            if grep -q 'FMT-exocortex-template\|github\.com/[A-Za-z0-9_-]*/[A-Za-z0-9_-]*-exocortex' "$ext_file" 2>/dev/null; then
+            if grep -q 'SDT\|github\.com/[A-Za-z0-9_-]*/[A-Za-z0-9_-]*-exocortex' "$ext_file" 2>/dev/null; then
                 sed_inplace "/UPSTREAM-CONST/!s|FMT-exocortex-template|${ENV_EXOCORTEX_REPO}|g" "$ext_file" 2>/dev/null && CHANGED=true
             fi
 
@@ -551,7 +551,7 @@ if [ -f "$ENV_FILE" ] && [ -n "${ENV_WORKSPACE_DIR:-}" ] && [ -n "${ENV_EXOCORTE
     # Fix memory/ user files (MEMORY.md only — platform files are replaced above)
     MEMORY_DIR="$HOME/.claude/projects/${CLAUDE_PROJECT_SLUG}/memory"
     if [ -d "$MEMORY_DIR" ] && [ -f "$MEMORY_DIR/MEMORY.md" ]; then
-        if grep -q 'FMT-exocortex-template' "$MEMORY_DIR/MEMORY.md" 2>/dev/null; then
+        if grep -q 'SDT' "$MEMORY_DIR/MEMORY.md" 2>/dev/null; then
             sed_inplace "/UPSTREAM-CONST/!s|FMT-exocortex-template|${ENV_EXOCORTEX_REPO}|g" "$MEMORY_DIR/MEMORY.md" 2>/dev/null
             LINKS_FIXED=$((LINKS_FIXED + 1))
         fi

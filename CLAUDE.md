@@ -63,7 +63,7 @@
 | Документ/чеклист | `memory/checklists.md` |
 
 Политика: ≤11 файлов. Справочники ≤100 строк. Протоколы ≤150. MEMORY.md ≤100 строк.
-Рабочая директория: `{{WORKSPACE_DIR}}/` (не из sub-директорий). `{{WORKSPACE_DIR}}/memory/` = симлинк на auto-memory.
+Рабочая директория: `/Users/alfa/iwe/sdt/` (не из sub-директорий). `/Users/alfa/iwe/sdt/memory/` = симлинк на auto-memory.
 
 ## 5. АрхГейт — ОБЯЗАТЕЛЬНАЯ оценка
 
@@ -93,7 +93,7 @@
 > Правила на обкатке. Работают → переносятся в шаблон (L1).
 > **Перенесено в L1 (20 мар):** SC Gate, межсистемные процессы, чеклист-верификация.
 
-### Staging-канал (my IWE → FMT-exocortex-template)
+### Staging-канал (my IWE → SDT1)
 
 
 **Правило добавления:** новое поведение в §9 (авторское) → ОДНОВРЕМЕННО строка в STAGING.md (`status: testing`).
@@ -101,7 +101,7 @@
 **Промоция (при Week Close):**
 1. Просмотреть STAGING.md → есть `validated`?
 2. Убрать авторские константы → заменить на `{{PLACEHOLDER}}`
-3. Перенести в `FMT-exocortex-template` + commit `feat: promote S-NN from staging`
+3. Перенести в `SDT1` + commit `feat: promote S-NN from staging`
 4. Обновить STAGING.md: статус → `promoted`
 
 **Отклонение:** специфичное для авторского окружения → статус `rejected` (остаётся навсегда в §9, не промотируется). Не удалять из таблицы — это решение.
@@ -124,7 +124,7 @@
 ### Именование
 
 - `DS-strategy` (не `DS-strategy`) — личный governance-хаб
-- `{{WORKSPACE_DIR}}/` — рабочая директория
+- `/Users/alfa/iwe/sdt/` — рабочая директория
 
 ### Read-only репо
 
@@ -135,10 +135,10 @@
 
 **Кастомизация протоколов/скиллов → ТОЛЬКО в `extensions/*.md`.**
 Прямое редактирование `.claude/skills/` или `memory/protocol-*.md` = ошибка: сотрётся при `update.sh`.
-Авторское → `extensions/`. Платформенное → `FMT-exocortex-template`, затем `update.sh`.
+Авторское → `extensions/`. Платформенное → `SDT1`, затем `update.sh`.
 
 
-### README.md (FMT-exocortex-template)
+### README.md (SDT1)
 
 > Изменение структуры — по согласованию с владельцем.
 
