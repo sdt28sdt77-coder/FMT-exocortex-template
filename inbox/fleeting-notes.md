@@ -1,10 +1,17 @@
 ---
 type: inbox
 status: active
-updated: 2026-08-29
+updated: 2026-09-01
 ---
 
 # Fleeting Notes
+
+---
+
+**Выполнено локальное обновление IWE**
+<sub>1 сен, 09:00</sub>
+
+Запущено bash update.sh --check и обновление на ПК (macOS).
 
 ---
 
